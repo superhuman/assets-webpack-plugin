@@ -1,11 +1,11 @@
 var merge = require('lodash.merge')
 
-var getAssetKind = require('./lib/getAssetKind')
-var isHMRUpdate = require('./lib/isHMRUpdate')
-var isSourceMap = require('./lib/isSourceMap')
+var getAssetKind = require('./src/getAssetKind')
+var isHMRUpdate = require('./src/isHMRUpdate')
+var isSourceMap = require('./src/isSourceMap')
 
-var createQueuedWriter = require('./lib/output/createQueuedWriter')
-var createOutputWriter = require('./lib/output/createOutputWriter')
+var createQueuedWriter = require('./src/output/createQueuedWriter')
+var createOutputWriter = require('./src/output/createOutputWriter')
 
 function AssetsWebpackPlugin (options) {
   this.options = merge({}, {
