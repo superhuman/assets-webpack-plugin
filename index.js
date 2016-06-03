@@ -26,7 +26,7 @@ AssetsWebpackPlugin.prototype = {
   apply: function (compiler) {
     var self = this
 
-    compiler.plugin('after-emit', function (compilation, callback) {
+    compiler.plugin('emit', function (compilation, callback) {
       var output = {}
       var options = compiler.options
       var stats = compilation.getStats().toJson({
@@ -87,6 +87,17 @@ AssetsWebpackPlugin.prototype = {
         }
         callback()
       })
+
+      var outputString = JSON.stringify(output, null, self.options.prettyPrint ? 2 : null)
+
+      compilation.assets[self.options.filename] = {
+        source: function() {
+          return outputString
+        },
+        size: function() {
+          return outputString.length
+        }
+      }
     })
   }
 }
