@@ -88,7 +88,7 @@ AssetsWebpackPlugin.prototype = {
         callback()
       })
 
-      var outputString = JSON.stringify(output, null, self.options.prettyPrint ? 2 : null)
+      var outputString = self.options.processOutput(output);
 
       compilation.assets[self.options.filename] = {
         source: function() {
